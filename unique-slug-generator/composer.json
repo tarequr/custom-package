@@ -1,0 +1,19 @@
+{
+    "name": "sabbir/unique-slug-generator",
+    "description": "Unique slug generator",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sabbir\\UniqueSlugGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "tarequr",
+            "email": "tarequrr8@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
