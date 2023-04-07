@@ -1,11 +1,11 @@
 {
-    "name": "sabbir/unique-slug-generator",
+    "name": "sabbir/unique-slug",
     "description": "Unique slug generator",
     "type": "composer-plugin",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Sabbir\\UniqueSlugGenerator\\": "src/"
+            "Sabbir\\UniqueSlug\\": "src/"
         }
     },
     "authors": [
@@ -15,5 +15,15 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sabbir\\UniqueSlug\\UniqueSlugServiceProvider"
+            ],
+            "aliases": {
+                "UniqueSlug": "Sabbir\\UniqueSlug\\UniqueSlug"
+            }
+        }
+    },
 }
