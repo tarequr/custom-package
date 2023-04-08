@@ -11,7 +11,9 @@ Class UniqueSlugServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind('unique-slug', function($app) {
+            return new \Sabbir\UniqueSlug\UniqueSlug();
+        });
     }
 
     /**

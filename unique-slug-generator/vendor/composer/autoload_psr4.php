@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Sabbir\\UniqueSlugGenerator\\' => array($baseDir . '/src'),
+    'Sabbir\\UniqueSlug\\' => array($baseDir . '/src'),
 );

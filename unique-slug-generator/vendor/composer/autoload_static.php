@@ -9,12 +9,12 @@ class ComposerStaticInit4d3f4fee28d47105b0fd213aaba06255
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
-            'Sabbir\\UniqueSlugGenerator\\' => 27,
+            'Sabbir\\UniqueSlug\\' => 18,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Sabbir\\UniqueSlugGenerator\\' => 
+        'Sabbir\\UniqueSlug\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

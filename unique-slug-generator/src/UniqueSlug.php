@@ -7,24 +7,24 @@ Class UniqueSlug
     /**
      * Generate a Unique Slug.
      *
-     * @param string $title
      * @param object $model
+     * @param string $value
      * @param string $field
      * @param string $separator
      *
      * @return string
      * @throws \Exception
      */
-    public static function generate($model, $title, $field, $separator = "-"): string
+    public function generate($model, $value, $field, $separator = "-"): string
     {
         $id = 0;
 
-        $slug =  preg_replace('/\s+/', $separator, (trim(strtolower($title))));
+        $slug =  preg_replace('/\s+/', $separator, (trim(strtolower($value))));
         $slug =  preg_replace('/\?+/', $separator, (trim(strtolower($slug))));
         $slug =  preg_replace('/\#+/', $separator, (trim(strtolower($slug))));
         $slug =  preg_replace('/\/+/', $separator, (trim(strtolower($slug))));
 
-        // $slug = preg_replace('!['.preg_quote($separator).']+!u', $separator, $title);
+        // $slug = preg_replace('!['.preg_quote($separator).']+!u', $separator, $value);
 
         // Remove all characters that are not the separator, letters, numbers, or whitespace.
         // $slug = preg_replace('![^'.preg_quote($separator).'\pL\pN\s]+!u', '', mb_strtolower($slug));
@@ -34,7 +34,7 @@ Class UniqueSlug
 
         // Get any that could possibly be related.
         // This cuts the queries down by doing it once.
-        $allSlugs = static::getRelatedSlugs($slug, $id, $model, $field);
+        $allSlugs = $this->getRelatedSlugs($slug, $id, $model, $field);
 
         // If we haven't used it before then we are all good.
         if (!$allSlugs->contains("$field", $slug)) {
@@ -42,7 +42,7 @@ Class UniqueSlug
         }
 
         // Just append numbers like a savage until we find not used.
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 100; $i++) {
             $newSlug = $slug . $separator . $i;
             if (!$allSlugs->contains("$field", $newSlug)) {
                 return $newSlug;
@@ -52,7 +52,7 @@ Class UniqueSlug
         throw new \Exception('Can not create a unique slug');
     }
 
-    private static function getRelatedSlugs($slug, $id, $model, $field)
+    private function getRelatedSlugs($slug, $id, $model, $field)
     {
         if (empty($id)) {
             $id = 0;
